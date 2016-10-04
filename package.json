@@ -1,0 +1,27 @@
+{
+  "name": "github-battle",
+  "version": "1.0.0",
+  "description": "<img src=\"http://www.reactjsprogram.com/images/reactjsprogram-500.png\" width=\"250\" align=\"right\">",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kan-gogngzhi/React-Fundamentals.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kan-gogngzhi/React-Fundamentals/issues"
+  },
+  "homepage": "https://github.com/kan-gogngzhi/React-Fundamentals#readme",
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-react": "^6.16.0",
+    "html-webpack-plugin": "^2.22.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  }
+}
