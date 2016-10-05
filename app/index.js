@@ -14,13 +14,12 @@ var ReactDOM = require('react-dom');
 //});
 
 const Link = (children) => {
-    function changeUrl(){
-        console.log('changed');
-    }
+    const changeUrl = ()=> {
+        window.location.replace(children)
+    };
     return (
         <div>
-            <div>Link</div>
-            <div onClick={changeUrl}>{children}</div>
+            <div style={{color: 'blue'}} onClick={changeUrl}>link</div>
         </div>
     );
 };
@@ -38,4 +37,4 @@ const Hello = React.createClass({
     }
 });
 
-ReactDOM.render(<Hello name="Kyle" link="www.google.com"/>, document.getElementById('app'));
+ReactDOM.render(<Hello name="Kyle" link="https://www.google.com"/>, document.getElementById('app'));
