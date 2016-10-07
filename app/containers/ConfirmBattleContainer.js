@@ -18,15 +18,28 @@ const PromptContainer = React.createClass({
             <ConfirmBattle
                 isLoading={this.state.loading}
                 playersInfo={this.state.playersInfo}
+                onInitiateBattle={this.handleInitiateBattle}
             />
         );
     },
     componentDidMount(){
-        let query = this.props.location.query;
+        let query = this.props.location.query,
+            that = this;
         githubHelper.getPlayersInfo([query.playerOne, query.playerTwo]).then((players)=> {
-            console.log('pl: ', players);
+            that.setState({
+                loading: false,
+                playersInfo: [players[0], players[1]]
+            });
         });
-    }
+    },
+    handleInitiateBattle: function () {
+        this.context.router.push({
+            pathname: '/results',
+            state: {
+                playersInfo: this.state.playersInfo
+            }
+        })
+    },
 });
 
 export default PromptContainer;
