@@ -3,6 +3,9 @@ import styles from '../styles/index';
 const {transparentBg} = styles;
 
 const PromptContainer = React.createClass({
+    contextTypes: {
+        router: React.PropTypes.object.isRequired
+    },
     getInitialState(){// todo es2015 will be in constructor
         return {
             username: ''
@@ -14,7 +17,7 @@ const PromptContainer = React.createClass({
                 <h1>{this.props.route.header}</h1>
                 <div className="col-sm-12"></div>
                 state: {this.state.username}<br/>
-                <form>
+                <form onSubmit={this.onSubmitUser}>
                     <div className="form-group">
                         <input
                             className="form-control"
@@ -35,6 +38,32 @@ const PromptContainer = React.createClass({
         this.setState({
             username: e.target.value
         });
+    },
+    onSubmitUser(e){
+        e.preventDefault();
+        let username = this.state.username;
+        this.setState({
+            username: ''
+        });
+        console.log('props: ', this.props);
+        console.log('route params: ', this.props.routeParams);
+        console.log('context: ', this.context);
+
+        if (this.props.routeParams.playerOne) {
+            // go to battle
+            this.context.router.push({
+                pathname: '/battle',
+                query: {
+                    playerOne: this.props.routeParams.playerOne,
+                    playerTwo: this.state.username
+                }
+            })
+        }
+        else {
+            // go to player two
+            // go to player two
+            this.context.router.push(`/playerTwo/${this.state.username}`);
+        }
     }
 });
 
